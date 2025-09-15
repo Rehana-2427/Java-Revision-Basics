@@ -1,0 +1,131 @@
+## Strongly-Typed Nature of Java
+
+Java is often referred to as a **strongly-typed language**.  
+This means:
+- Every variable, parameter, and expression in Java has a **data type**.  
+- Types are checked at **compile time** (and sometimes at runtime).  
+- Strict rules prevent assigning incompatible values.  
+
+**Example:**  
+If you try to assign a `String` value to an `int` variable, the compiler throws an error:
+```java
+int number = "Hello"; // ❌ Compile-time error
+
+
+➡️ This prevents dangerous code from running and helps catch errors early.
+➡️ Java’s strong typing makes it robust and reliable for building complex systems.
+
+
+What are Data Types?
+
+In Java, every variable has a data type, which defines the kind of values it can store.
+This ensures correctness and prevents invalid operations.
+
+Categories of Data Types
+
+Primitive Data Types – store simple values directly in memory.
+Examples: byte, short, int, long, float, double, char, boolean.
+
+Reference (Non-primitive) Data Types – store references (addresses) to objects in memory.
+Examples: String, arrays, objects, custom classes
+
+
+| Aspect             | Primitive Data Types                                                 | Reference (Non-primitive) Data Types                          |
+| ------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------- |
+| **Definition**     | Basic building blocks of data (simple values).                       | Used to store objects and more complex structures.            |
+| **Examples**       | `byte`, `short`, `int`, `long`, `float`, `double`, `char`, `boolean` | `String`, arrays, objects, custom classes                     |
+| **Memory Storage** | Store the actual value directly in memory.                           | Store a reference (address) pointing to the object in memory. |
+| **Size**           | Fixed size (depends on type, e.g., `int` = 4 bytes).                 | Size varies depending on the object.                          |
+| **Default Value**  | Numeric = `0`, boolean = `false`, char = `\u0000`.                   | `null`                                                        |
+| **Operations**     | Support arithmetic, logical, and comparison operators directly.      | Require methods (e.g., `str.length()`, `list.add()`).         |
+
+
+
+What are Variables?
+
+A variable is a container that holds a value or a reference to a value.
+
+A variable has:
+
+Name – identifier used to refer to the variable in code.
+
+Data Type – defines the kind of value it can hold.
+
+Value – the actual stored data.
+
+Example:
+
+class VariableDemo {
+    public static void main(String[] args) {
+        int x = 10; // int = data type, x = variable name, 10 = value
+        System.out.println("Value of x: " + x);
+    }
+}
+
+
+Here:
+
+int → data type
+
+x → variable name
+
+10 → value stored
+
+Since x is a variable, its value can change:
+
+x = 20; // ✅ now x holds a different value
+
+Rules for Variables in Java
+
+A variable must be declared with a data type before use.
+
+int age; // declaration
+age = 25; // assignment
+
+
+Once declared, the data type cannot change.
+
+int age = 25;
+age = "twenty"; // ❌ error: incompatible types
+
+
+Variable names must be meaningful and follow Java naming conventions (camelCase).
+
+
+Why Understanding Data Types and Variables is Important
+
+Ensures correct storage and manipulation of data.
+
+Prevents logical and runtime errors.
+
+Improves program efficiency.
+
+Helps developers write clean, maintainable, and bug-free code.
+
+
+Got it 👍
+You want the **sizes of primitive data types in Java**. Here’s a clear reference you can add to your lesson.
+
+---
+
+# ✅ Size of Primitive Data Types in Java
+
+| Data Type   | Size (in bytes)                                                    | Range (Approx)                                          | Default Value |
+| ----------- | ------------------------------------------------------------------ | ------------------------------------------------------- | ------------- |
+| **byte**    | 1 byte (8 bits)                                                    | -128 to 127                                             | `0`           |
+| **short**   | 2 bytes (16 bits)                                                  | -32,768 to 32,767                                       | `0`           |
+| **int**     | 4 bytes (32 bits)                                                  | -2,147,483,648 to 2,147,483,647                         | `0`           |
+| **long**    | 8 bytes (64 bits)                                                  | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 | `0L`          |
+| **float**   | 4 bytes (32 bits, IEEE 754)                                        | \~±3.4e−038 to ±3.4e+038 (approx 7 decimal digits)      | `0.0f`        |
+| **double**  | 8 bytes (64 bits, IEEE 754)                                        | \~±1.7e−308 to ±1.7e+308 (approx 15 decimal digits)     | `0.0d`        |
+| **char**    | 2 bytes (16 bits, Unicode)                                         | `\u0000` (0) to `\uffff` (65,535)                       | `'\u0000'`    |
+| **boolean** | JVM dependent (often 1 bit, but represented as 1 byte for storage) | `true` or `false`                                       | `false`       |
+
+---
+
+📌 Notes
+* `boolean` size is **not precisely defined** in Java — it only stores `true` or `false`. Internally, the JVM may use 1 byte for it.
+* `char` is **2 bytes** in Java because it uses **Unicode**, unlike many other languages that use 1-byte ASCII.
+
+---
+
