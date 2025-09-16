@@ -1,0 +1,132 @@
+
+---
+
+# 📌 Primitive Data Types in Java
+
+Java has **8 primitive data types**:
+👉 `byte, short, int, long, float, double, char, boolean`
+
+They are called *primitive* because they are the most basic building blocks of Java programs.
+
+---
+
+## 1. Integer Types (store whole numbers)
+
+### (a) **byte**
+
+* Size: **1 byte (8 bits)**
+* Range: **-128 to 127**
+* Example:
+
+  ```java
+  byte age = 25;
+  ```
+
+---
+
+### (b) **short**
+
+* Size: **2 bytes (16 bits)**
+* Range: **-32,768 to 32,767**
+* Example:
+
+  ```java
+  short year = 2024;
+  ```
+
+---
+
+### (c) **int**
+
+* Size: **4 bytes (32 bits)**
+* Range: **-2,147,483,648 to 2,147,483,647**
+* Example:
+
+  ```java
+  int population = 1000000;
+  ```
+
+---
+
+### (d) **long**
+
+* Size: **8 bytes (64 bits)**
+* Range: **-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807**
+* Example:
+
+  ```java
+  long distance = 123456789L;  // Notice the L at the end
+  ```
+
+⚠️ Important: Large numbers must end with **L** (capital or small).
+
+---
+
+## 2. Floating-Point Types (store decimal numbers)
+
+### (a) **float**
+
+* Size: **4 bytes (32 bits, single precision)**
+* Range: \~ ±3.4e−038 to ±3.4e+038
+* Example:
+
+  ```java
+  float weight = 68.5F;  // Must add F
+  ```
+
+---
+
+### (b) **double**
+
+* Size: **8 bytes (64 bits, double precision)**
+* Range: \~ ±1.7e−308 to ±1.7e+308
+* Example:
+
+  ```java
+  double height = 178.6;
+  ```
+
+⚠️ Important: By default, Java treats decimal numbers as **double**.
+Use `F` only when you want **float**.
+
+---
+
+## 3. Character Type
+
+### **char**
+
+* Size: **2 bytes (16 bits, Unicode)**
+* Stores a **single character** (letter, number, or symbol).
+* Example:
+
+  ```java
+  char grade = 'A';
+  char grade2 = 65; // Unicode value → 'A'
+  ```
+
+---
+
+## 4. Boolean Type
+
+### **boolean**
+
+* Size: **1 bit (depends on JVM, but logically true/false only)**
+* Values: **true** or **false**
+* Example:
+
+  ```java
+  boolean isStudent = true;
+  ```
+
+---
+
+## 5. Key Rules About Variables
+
+* Must start with a **letter, underscore (\_) or dollar sign (\$)**.
+* Cannot contain spaces or special characters.
+* Are **case-sensitive** (`age` and `Age` are different).
+* Must be **declared before use**.
+* Should be **initialized before accessing value**.
+
+---
+

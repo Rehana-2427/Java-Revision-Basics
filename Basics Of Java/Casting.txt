@@ -1,0 +1,63 @@
+
+---
+
+### 🔹 Casting in Java
+
+Casting = converting one data type into another.
+It works only between **compatible data types** (e.g., `float → int` is allowed, but `boolean → int` is not).
+
+---
+
+### 🔸 Types of Casting
+
+There are **two types** of casting in Java:
+
+#### 1. **Explicit Casting (Type Casting)**
+
+* You **manually specify** the target type.
+* Syntax:
+
+  ```java
+  targetType variable = (targetType) value;
+  ```
+* Example:
+
+  ```java
+  float f = 3.14f;        // float variable
+  int e = (int) f;        // explicit cast
+  ```
+
+  ✅ Here, `e` becomes `3` (decimal part is truncated).
+
+⚠️ Important: Decimal part is lost when casting from floating-point → integer.
+
+---
+
+#### 2. **Implicit Casting (Type Promotion)**
+
+* Done **automatically by the compiler**.
+* Smaller data type → larger data type.
+* Example:
+
+  ```java
+  byte b = 10;   // 1 byte
+  int i = b;     // implicit cast to int (4 bytes)
+  ```
+
+  ✅ Compiler promotes `byte` to `int` automatically.
+
+⚠️ Issue: If the smaller type value is too large for the larger type, information loss may occur.
+
+---
+
+### 🔸 Casting Rules
+
+* **Widening (Implicit) Casting**: smaller → larger (safe, automatic).
+  Example: `byte → short → int → long → float → double`
+* **Narrowing (Explicit) Casting**: larger → smaller (may lose data, needs explicit cast).
+  Example: `double → float → long → int → short → byte`
+
+---
+
+
+

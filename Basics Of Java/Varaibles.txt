@@ -1,0 +1,62 @@
+
+---
+
+## 📌 Variable Declaration & Initialization in Java
+
+### 1. Declaration
+
+* Reserves memory for a variable.
+* Only tells the compiler the **data type + name**, no value yet.
+
+```java
+int age;
+```
+
+🖼️ Diagram:
+
+```
+[ age ] →  (empty, waiting for value)
+```
+
+---
+
+### 2. Initialization
+
+* Assigns the **first value** to a declared variable.
+
+```java
+age = 25;
+```
+
+🖼️ Diagram:
+
+```
+[ age ] →  25
+```
+
+---
+
+### 3. Declaration + Initialization (Single Line)
+
+* You can declare and assign a value at the same time.
+
+```java
+int age = 25;
+```
+
+🖼️ Diagram:
+
+```
+[ age ] →  25  (created and initialized together)
+```
+
+---
+
+### 4. Key Points
+
+* A variable **must be declared** before use.
+* A variable **must be initialized** before accessing its value.
+* Declaration and initialization can be done **in two steps or in one step**.
+
+---
+

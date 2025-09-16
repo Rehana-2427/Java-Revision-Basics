@@ -1,0 +1,202 @@
+Non-primitive (Reference) Data Types — Step by step
+1 — Quick definition
+
+Reference (non-primitive) types are types that refer to objects.
+
+They are not language-built simple values (like int), but classes/arrays/objects built from those primitives and other types.
+
+Examples: String, arrays (int[], String[]), user-defined classes (Person), wrapper classes (Integer), interfaces, enums, and collections (List, Map, etc.).
+
+2 — Main categories (what you must teach)
+
+String — sequence of characters (class java.lang.String).
+
+Arrays — ordered collection of elements of same type (arrays are objects).
+
+Classes & Objects — user-defined types: blueprints (class) and instances (objects).
+
+Wrapper classes — Integer, Double, Boolean, etc. (object versions of primitives).
+
+Collections & others — List, Set, Map, Enum, Interface (all reference types).
+
+3 — Memory & lifecycle (stack vs heap — correct nuance)
+
+Local variables (method variables) are stored on the stack. For reference variables, the reference (pointer) is on the stack and the object it points to lives on the heap.
+
+Fields (instance variables) inside objects live on the heap as part of the object.
+
+Objects on the heap are reclaimed by the JVM garbage collector when they become unreachable (no live references).
+
+Default value for reference variables (fields) is null. Local reference variables must be initialized before use.
+
+4 — Creating/instantiating objects
+
+Use new and constructors to create objects:
+
+Person p = new Person("Rehana", 30); // p holds a reference to an object on heap
+
+
+Strings have two common creation ways:
+
+String a = "Hello";           // string literal — interned pool
+String b = new String("Hello"); // explicit object (not pooled)
+
+5 — Strings (important details)
+
+String is immutable — once created its contents cannot change. Methods like concat() return new String objects.
+
+Because they’re immutable, Java maintains a string constant pool — identical string literals may point to the same object.
+
+Equality:
+
+== compares references (same object).
+
+equals() compares textual content.
+
+String s1 = "Hi";
+String s2 = new String("Hi");
+s1 == s2           // false
+s1.equals(s2)      // true
+
+
+For many concatenations use StringBuilder or StringBuffer (mutable, efficient).
+
+6 — Arrays (key points & examples)
+
+Arrays are objects. Their length is stored as a field (arr.length — no parentheses).
+
+Creation:
+
+int[] nums = new int[5];        // length 5, default zeros
+int[] nums2 = {1, 2, 3};        // literal init
+String[] names = new String[3]; // elements default to null
+
+
+Arrays are fixed length once created. For variable length collections, use ArrayList.
+
+Multidimensional arrays are arrays of arrays:
+
+int[][] matrix = new int[3][4];
+
+
+If array type is primitive (e.g., int[]) elements store actual primitive values. If array type is reference (e.g., String[]) elements hold references.
+
+7 — Classes & objects (blueprint → instance)
+
+Class defines fields (state) and methods (behavior).
+
+Object is an instance created with new.
+
+Example:
+
+public class Person {
+  String name;
+  int age;
+  public Person(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+  public String toString() { return name + " (" + age + ")"; }
+}
+Person p = new Person("Rehana", 30);
+
+
+Classes can have static members (shared across instances) and instance members (per object).
+
+Access modifiers: public, private, protected, package-private.
+
+8 — Wrapper classes & autoboxing
+
+Integer, Double, Boolean, etc. wrap primitive values as objects.
+
+Autoboxing and unboxing convert automatically:
+
+Integer n = 10; // autoboxing
+int m = n;      // unboxing
+
+
+Be careful: unboxing null causes NullPointerException:
+
+Integer x = null;
+int y = x; // NPE
+
+9 — Passing references to methods (Java is pass-by-value)
+
+Java always passes arguments by value. For objects, the value passed is the reference.
+
+Effects:
+
+You can modify the object’s internal state inside the method — caller sees changes.
+
+Reassigning the parameter to a new object does not change the caller’s reference.
+
+void changeName(Person p) { p.name = "X"; } // modifies original
+void reassign(Person p) { p = new Person("Other", 1); } // does not change caller ref
+
+10 — equals(), == and hashCode()
+
+== compares object references.
+
+equals() compares logical equality (when overridden, e.g., String.equals).
+
+hashCode() must be consistent with equals() for objects used as keys in hash-based collections (HashMap, HashSet). If you create a custom class used as a key, override both equals() and hashCode().
+
+11 — Garbage collection & finalization
+
+Objects without reachable references become eligible for garbage collection. JVM reclaims memory automatically.
+
+Do not rely on finalize() — it’s deprecated/ineffective. Use try-with-resources or explicit cleanup for non-memory resources.
+
+12 — Common pitfalls & best practices
+
+NullPointerException: check for null before calling methods on references.
+
+Mutability: Strings are immutable; use StringBuilder for heavy mutations.
+
+Use Collections instead of arrays if you need dynamic size or utility methods.
+
+Override equals & hashCode when objects are used in collections.
+
+Avoid unboxing null (watch wrapper types).
+
+Be explicit about ownership: methods changing object state should be documented.
+
+13 — Short demo with examples (copy-pasteable)
+public class RefDemo {
+    public static void main(String[] args) {
+        // String (literal vs new)
+        String s1 = "Hello";
+        String s2 = new String("Hello");
+        System.out.println(s1 == s2);          // false (different objects)
+        System.out.println(s1.equals(s2));     // true
+
+        // Array
+        int[] nums = new int[3];               // {0,0,0}
+        int[] nums2 = {1,2,3};
+        System.out.println(nums.length);       // 3
+
+        // Class & object
+        Person p = new Person("Rehana", 30);
+        System.out.println(p);                 // uses toString()
+
+        // Passing reference
+        modifyAge(p);
+        System.out.println(p.age);             // changed by method
+
+        // Wrapper + autoboxing
+        Integer val = 100;                     // autobox
+        int primitive = val;                   // unbox
+    }
+
+    static void modifyAge(Person person) {
+        person.age = 31; // modifies the original object's field
+        person = new Person("Someone", 1); // does not affect caller's reference
+    }
+}
+
+class Person {
+    String name;
+    int age;
+    Person(String name, int age) { this.name = name; this.age = age; }
+    @Override public String toString() { return name + " (" + age + ")"; }
+}
